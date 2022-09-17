@@ -3,13 +3,12 @@ Rails.application.routes.draw do
     resources :items, only: [:index]
   end
 
- devise_for :customers, controllers: {
+ devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-
-devise_for :admin, controllers: {
+devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 end
