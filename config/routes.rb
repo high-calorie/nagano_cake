@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   namespace :admin do
-  　　　　resources :items, only: [:index]
+    get 'genres/index'
+    get 'genres/edit'
+    
+  　resources :items, only: [:index]
+
     get 'customers/show'
   end
 
