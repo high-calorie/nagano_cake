@@ -34,6 +34,14 @@ class DeviseCreateCustomers < ActiveRecord::Migration[6.1]
 
 
       t.timestamps null: false
+      t.string :last_name, null: false
+      t.string :first_name, null: false
+      t.string :last_name_kana, null: false
+      t.string :first_name_kana, null: false
+      t.string :post_code, null: false
+      t.string :phone_namber, null: false 
+      t.string :address, null: false
+      t.boolean :withdrawal_flag, null: false, default: false
     end
 
     add_index :customers, :email,                unique: true
