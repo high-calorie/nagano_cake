@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   namespace :admin do
     resources :genres, only: [:create, :new, :edit, :update, :destroy]
 
-  　resources :items, only: [:index]
+    resources :items, only: [:index]
 
     get 'customers/show'
   end
