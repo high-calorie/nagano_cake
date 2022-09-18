@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
-  has_one_attached :image
+
+     
+     has_one_attached :image
   belongs_to :genre
   
   def get_image
@@ -7,4 +9,9 @@ class Item < ApplicationRecord
       image
     end
   end
+    
+    
+    
+    
+
 end
