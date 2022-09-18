@@ -1,4 +1,5 @@
 class Admin::GenresController < ApplicationController
+
     
     def index
         @genre = Genre.new
@@ -18,6 +19,9 @@ class Admin::GenresController < ApplicationController
     end
     
     
+    def edit
+    
+  　end
     
     private
     
@@ -30,4 +34,5 @@ class Admin::GenresController < ApplicationController
     
     
     
+
 end
