@@ -1,1 +1,12 @@
 <h2>ジャンル編集</h2>
+
+    <div>
+        <%= f.label :genre %><br>
+    </div>
+<%= form_for(@admin, url: admin_path(@admin)) do |f| %>
+    <div>
+        <%= f.label :ジャンル名 %><br>
+        <%= f.text_area :genre_name, :placeholder =>"#{@genre.genre_name}" %>
+    </div>
+    <div><%= f.submit "変更を保存" %></div>
+<% end %>
