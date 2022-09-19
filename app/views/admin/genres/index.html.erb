@@ -6,14 +6,14 @@
     <%= f.text_field :genre_name, placeholder: "ジャンル名" %>
     <%= f.submit "新規登録" %>
   <% end %>
-  
-  
+
+
  <h2>ジャンル</h2>
- 
+
  <body>
     <% @genres.each do |genre| %>
     <%= genre.genre_name %>
-    <%= link_to "編集する" admin_genres_edit_path(@genre) %>
+    <%= link_to "編集する", edit_admin_genre_path(genre.id) %>
         <% end %>
  </body>
 
