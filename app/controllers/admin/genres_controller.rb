@@ -1,6 +1,5 @@
 class Admin::GenresController < ApplicationController
 
-<<<<<<< HEAD
   def index
       @genre = Genre.new
       @genres = Genre.all
@@ -42,36 +41,5 @@ class Admin::GenresController < ApplicationController
   def genre_params
     params.require(:genre).permit(:name)
   end
-=======
-    
-    def index
-        @genre = Genre.new
-        @genres = Genre.all
-    end
-        
-    
-    def create
-        @genre = Genre.new(genre_params)
-        if @genre.save
-           flash[:notice] = "ジャンルを追加しました"
-           redirect_to admin_genres_path
-        else
-          @genres = Genre.all
-          render :index 
-        end
-    end
-    
-private
-    
-    def genre_params
-    params.require(:genre).permit(:genre_name)
-  
-    end
-
-
-
-
-    
->>>>>>> 91935f815902b689aa04c399208c68b4158712c3
 
 end
