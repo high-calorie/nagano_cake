@@ -1,8 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+  get 'homes/top'
+
     resources :items, except: [:destroy]
+
 
     get 'customers/show'
   end
