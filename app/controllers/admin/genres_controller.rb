@@ -2,13 +2,12 @@ class Admin::GenresController < ApplicationController
 
     
     def index
-        @genre = Genre.new
         @genres = Genre.all
     end
         
     
     def create
-        @genre = Genre.new(genre_params)
+        @genre = Genre.new
         if @genre.save
            flash[:notice] = "ジャンルを追加しました"
            redirect_to admin_genres_path
@@ -23,16 +22,16 @@ class Admin::GenresController < ApplicationController
     
   　end
     
-    private
+private
     
     def genre_params
-    params.require(:genre).permit(:name)
+    params.require(:genre).permit(:genre_name)
   
     end
 
-        
-    
-    
-    
+
+
+
+    end
 
 end
