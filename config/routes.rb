@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     get 'genres/edit'
 
     resources :genres, only: [:create, :index]
-  　resources :items, except: [:destroy]
+    resources :items, except: [:destroy]
 
     get 'customers/show'
   end
