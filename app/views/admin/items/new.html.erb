@@ -1,25 +1,38 @@
 <h2>商品新規登録</h2>
   <%= form_with model: @item, url:admin_items_path, method: :post, local:true do |f| %>
-    <table>
-  <thead>
-    <tr>
-      <th>商品画像</th><br>
-      <th>商品名</th><br>
-      <th>商品説明</th><br>
-      <th>ジャンル</th><br>
-      <th>税抜価格</th><br>
-      <th>販売ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-     <tr>
-       <td><%= f.file_field :image, accept: 'image/*' %></td><br>
-       <td><%= f.text_field :name %></td><br>
-       <td><%= f.text_area :introduction %></td><br>
-       <td> <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: '--選択してください--'} %></td><br>
-       <td> <%= f.text_field :net_price %></td><br>
-       <td> <%= f.status%></td><br>
-     </tr>
-    <% end %>
-  </tbody>
-</table>
+    <div>
+      <%= f.label "商品画像" %>
+      <%= f.file_field :image, accept: 'image/*' %>
+    </div>
+
+    <div>
+      <%= f.label "商品名" %>
+      <%= f.text_field :name %>
+    </div>
+
+    <div>
+      <%= f.label "商品説明" %>
+      <%= f.text_area :introduction %>
+    </div>
+
+    <div>
+      <%= f.label "ジャンル" %>
+      <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: '--選択してください--'} %>
+    </div>
+
+    <div>
+      <%= f.label "税抜価格" %>
+      <%= f.text_field :net_price %>
+    </div>
+
+    <div>
+      <%= f.label "販売ステータス" %>
+      <%= f.select :status, [['販売中', true], ['販売停止中', false]] %>
+    </div>
+
+    <div>
+      <%= f.submit "新規登録" %>
+    </div>
+ <% end %>
+
+
