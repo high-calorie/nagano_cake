@@ -2,12 +2,12 @@ class Admin::ItemsController < ApplicationController
 
     
     def index
-    　@items = Item.all
-    　@item = Item.find(params[:id])
+        @items = Item.all
+        @item = Item.find(params[:id])
   　end
     
     
-    def  new
+    def new
         @item = Item.new
         @genre = Genre.all
     end
@@ -28,6 +28,13 @@ class Admin::ItemsController < ApplicationController
         redirect_to admin_item_path(@item.id) 
     end
     
+    def edit
+        @item = Item.find_by(params[:id])
+        @genres = Genre.all
+    end
+    
+    
+    
     private
     
     
@@ -38,5 +45,5 @@ class Admin::ItemsController < ApplicationController
     
     
     
-
+    end
 end
