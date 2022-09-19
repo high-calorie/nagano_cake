@@ -1,5 +1,5 @@
 <h2>商品新規登録</h2>
-  <%= form_with model: @item do |f| %>
+  <%= form_with model: @item, url:admin_items_path, method: :post, local:true do |f| %>
     <table>
   <thead>
     <tr>
@@ -16,7 +16,7 @@
        <td><%= f.file_field :image, accept: 'image/*' %></td><br>
        <td><%= f.text_field :name %></td><br>
        <td><%= f.text_area :introduction %></td><br>
-       <td> <%= f.select :genre_id %></td><br>
+       <td> <%= f.collection_select :genre_id, Genre.all, :id, :name, {include_blank: '--選択してください--'} %></td><br>
        <td> <%= f.text_field :net_price %></td><br>
        <td> <%= f.status%></td><br>
      </tr>
