@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
+    get 'homes/top'
 
     resources :genres, only: [:create, :index]
     resources :items, except: [:destroy]
+
 
     get 'customers/show'
   end
