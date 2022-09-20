@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
-    get 'homes/top'
+  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+  get 'homes/top'
 
-    resources :genres, only: [:create, :index]
     resources :items, except: [:destroy]
 
 
@@ -20,7 +20,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
- 
+
 
 end
 
