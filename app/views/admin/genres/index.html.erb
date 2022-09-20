@@ -13,9 +13,7 @@
  <body>
     <% @genres.each do |genre| %>
     <%= genre.genre_name %>
-    <% end %>
-    <%= link_to "編集する" %>
-
-
+    <%= link_to "編集する", edit_admin_genre_path(genre.id) %>
+        <% end %>
  </body>
 
