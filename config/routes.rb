@@ -6,7 +6,6 @@ Rails.application.routes.draw do
 
     resources :items, except: [:destroy]
 
-
     get 'customers/show'
   end
 
