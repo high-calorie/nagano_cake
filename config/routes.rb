@@ -1,4 +1,3 @@
-Rails.application.routes.draw do
 
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
