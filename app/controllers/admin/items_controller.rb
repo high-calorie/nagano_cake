@@ -41,8 +41,4 @@ class Admin::ItemsController < ApplicationController
         params.require(:item).permit(:item_image, :name, :introduction, :net_price, :status, :genre_id)
     end
     
-    
-    
-    
-    
 end

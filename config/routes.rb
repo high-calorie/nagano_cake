@@ -1,4 +1,8 @@
 
+Rails.application.routes.draw do
+  
+  get 'cart_items/index'
+  namespace :admin do
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
 
@@ -6,7 +10,11 @@
 
     get 'customers/show'
     get 'customers/edit'
-    patch 'customer/:id'
+   #patch 'customers/:id'
+  end
+  
+  namespace :public do
+    get 'cart_items/index'
   end
 
 
@@ -22,4 +30,6 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 
 
 end
+
+
 
