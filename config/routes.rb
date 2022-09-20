@@ -1,5 +1,9 @@
 
 Rails.application.routes.draw do
+  namespace :public do
+    get 'homes/top'
+    get 'homes/about'
+  end
   namespace :admin do
 
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
@@ -9,7 +13,7 @@ Rails.application.routes.draw do
 
     get 'customers/show'
     get 'customers/edit'
-    patch 'customer/:id'
+    # patch 'customer/:id'
   end
 
 
