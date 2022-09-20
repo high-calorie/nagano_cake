@@ -1,10 +1,10 @@
 class Admin::ItemsController < ApplicationController
 
     
-    def index
-        @items = Item.all
-        @item = Item.find(params[:id])
-  　end
+#     def index
+#         @items = Item.all
+#         @item = Item.find(params[:id])
+#   　end
     
     
     def new
@@ -45,5 +45,5 @@ class Admin::ItemsController < ApplicationController
     
     
     
-    end
+    
 end
