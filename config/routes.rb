@@ -1,14 +1,15 @@
 Rails.application.routes.draw do
-  namespace :admin do
-    get 'genres/index'
-    get 'genres/edit'
 
-    resources :items, only: [:index]
+  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+  get 'homes/top'
+
+    resources :items, except: [:destroy]
 
     get 'customers/show'
     get 'customers/edit'
     patch 'customer/:id'
   end
+
 
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
@@ -18,4 +19,8 @@ Rails.application.routes.draw do
 devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
+
+
+
 end
+
