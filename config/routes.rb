@@ -7,6 +7,11 @@ Rails.application.routes.draw do
     get 'customers/show'
   end
 
+  namespace :public do
+    resources :items, only: [:show, :index]
+    get 'homes/top'
+  end
+
 
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",

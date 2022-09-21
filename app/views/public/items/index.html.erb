@@ -1,12 +1,15 @@
 <div class='container px-5 px-sm-0'>
   <div class='row'>
+
     <div class='col-md-3'>
-      <!--ジャンル検索機能-->
-      <%= render 'items/genresearch', genres: @genres %>
+    <%= render 'genresearch', genres: @genres %>
     </div>
+
     <div class='col-md-8 offset-md-1'>
       <h2>商品一覧</h2>
-      <%= render 'books/index', books: @books %>
+      <th colspan="3"></th>
+    <%= render 'index', items: @items %>
     </div>
+
   </div>
 </div>
