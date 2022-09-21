@@ -1,27 +1,28 @@
 <header>
     <% if customer_signed_in? %>
-          
+
             <%= link_to "商品一覧" %>
-          
+
             <%=  link_to "会員一覧" %>
-             
+
             <%=  link_to "注文履歴一覧" %>
-            
+
             <%= link_to "ジャンル一覧" %>
-            
+
             <%= link_to "ログアウト" %>
-             
+
         <% else %>
-          
+
             <%= link_to "アバウト" %>
-            
+
             <%= link_to "商品一覧" %>
-             
+
             <%= link_to "新規登録" %>
-            
+
             <%= link_to "ログイン" %>
-              
+
     <% end %>
-    
-    
+
+    <%= render 'layouts/search' %>
+
 </header>

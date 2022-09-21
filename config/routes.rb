@@ -14,6 +14,7 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
     # patch 'customer/:id'
+    get "search" => "searches#search"
   end
 
 
