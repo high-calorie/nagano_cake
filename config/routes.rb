@@ -1,4 +1,5 @@
-
+Rails.application.routes.draw do
+  namespace :admin do
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
 
@@ -6,7 +7,6 @@
 
     get 'customers/show'
     get 'customers/edit'
-    patch 'customer/:id'
   end
 
 
