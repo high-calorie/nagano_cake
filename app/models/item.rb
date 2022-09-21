@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
 
      
-     has_one_attached :image
+  has_one_attached :image
   belongs_to :genre
   
   def get_image
@@ -10,6 +10,9 @@ class Item < ApplicationRecord
     end
   end
     
+  def add_tax_net_price
+   (self.net_price * 1.10).round
+  end
     
     
     
