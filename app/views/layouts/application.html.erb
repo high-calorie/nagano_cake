@@ -11,8 +11,20 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    
+    <header>
+      <% if request.path == 'admin' %>
+       <%= render 'layouts/header' %>
+      <% else %>
+        <%= link_to "アバウト2" %>
+            
+        <%= link_to "商品一覧", admin_items_path %>
+            
+        <%= link_to "新規登録" %>
+            
+        <%= link_to "ログイン" %>
+      <% end %>
+    </header>
+     
     <%= yield %>
   </body>
 </html>
