@@ -1,6 +1,6 @@
 
 Rails.application.routes.draw do
-  
+
   get 'cart_items/index'
   namespace :admin do
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
@@ -12,9 +12,10 @@ Rails.application.routes.draw do
     get 'customers/edit'
    #patch 'customers/:id'
   end
-  
+
   namespace :public do
-    get 'cart_items/index'
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    resources :cart_items, only: [:index, :create, :update, :destroy]
   end
 
 
