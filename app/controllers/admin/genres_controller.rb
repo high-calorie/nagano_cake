@@ -1,4 +1,17 @@
 class Admin::GenresController < ApplicationController
+  def edit
+    @genre = Genre.find(params[:id])
+  end
+
+  def update
+    @genre = Genre.find(params[:id])
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
+    else
+      render :index
+    end
+  end
+
 
   def index
       @genre = Genre.new
@@ -23,8 +36,8 @@ class Admin::GenresController < ApplicationController
 
   def update
     @genre = Genre.find(params[:id])
-    if @genre.update(admin_params)
-      redirect_to request.referer
+    if @genre.update(genre_params)
+      redirect_to admin_genres_path
     else
       render :new
     end
@@ -39,7 +52,7 @@ class Admin::GenresController < ApplicationController
   private
 
   def genre_params
-    params.require(:genre).permit(:name)
+    params.require(:genre).permit(:genre_name)
   end
 
 end
