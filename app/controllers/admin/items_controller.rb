@@ -1,12 +1,20 @@
 class Admin::ItemsController < ApplicationController
 
-  def new
-    @item = Item.new
-  end
-
-  def create
-    @item = Item.new(item_params)
+    def index
+        @items = Item.all
+   　end
     
+    
+    def new
+        @item = Item.new
+        @genre = Genre.all
+    end
+    
+    def create
+        @item = Item.new(item_params)
+        @item.save
+        redirect_to admin_item_path(@item.id)
+
     if @item.save
       redirect_to admin_item_path(@item)
     else
@@ -14,10 +22,6 @@ class Admin::ItemsController < ApplicationController
     end
   end
 
-  def index
-        @items = Item.all
-  end
-    
   def show
       @item = Item.find(params[:id])
   end
@@ -41,10 +45,6 @@ class Admin::ItemsController < ApplicationController
     def item_params
         params.require(:item).permit(:item_image, :name, :introduction, :net_price, :status, :genre_id)
     end
-    
-    
-    end
-    
     
 
 end
