@@ -1,8 +1,6 @@
 class Public::CartItemsController < ApplicationController
   def index
-<<<<<<< HEAD
-    @cart_items = Cart_item.all
-=======
+
     @cart_items = CartItem.all
     @cart_item = CartItem.new
     @total = 0
@@ -42,6 +40,5 @@ class Public::CartItemsController < ApplicationController
   private
   def cart_item_params
       params.require(:cart_item).permit(:item_id, :quantity)
->>>>>>> 9d068e2549407e90fe43cd30deaa033ce1974e28
   end
 end
