@@ -2,6 +2,13 @@
 
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'deliveries/index'
+    get 'deliveries/edit'
+    get 'deliveries/create'
+    get 'deliveries/update'
+    get 'deliveries/destroy'
+  end
   namespace :admin do
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
@@ -12,19 +19,19 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
+
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
   end
-
-
 
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
 
   resources :items, except: [:destroy]
-
     get 'customers/show'
     get 'customers/edit'
     # patch 'customer/:id'
     get "search" => "searches#search"
+
 
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
