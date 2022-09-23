@@ -1,0 +1,8 @@
+<table class='table'>
+    <tr>ジャンル検索</tr><br>
+    <% genres.each do |genre| %>
+    <tr>
+      <%= link_to genre.genre_name, admin_genres_path(genre_id: genre.id), class: "text-secondary" %><br>
+    </tr>
+    <% end %>
+</table>

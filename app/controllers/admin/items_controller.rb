@@ -1,9 +1,5 @@
 class Admin::ItemsController < ApplicationController
 
-<<<<<<< HEAD
-
-=======
->>>>>>> 9d068e2549407e90fe43cd30deaa033ce1974e28
     def index
         @items = Item.all
     end
@@ -16,53 +12,33 @@ class Admin::ItemsController < ApplicationController
 
     def create
         @item = Item.new(item_params)
-        @item.save
-<<<<<<< HEAD
-        redirect_to admin_items_path(@item)
-    end
-
-    def show
-        @item = Item.find(params[:id])
-    end
-
-=======
-        redirect_to admin_item_path(@item.id)
-
-    if @item.save
-      redirect_to admin_item_path(@item)
+         if @item.save
+         redirect_to admin_item_path(@item)
     else
       render 'new'
     end
   end
 
-  def show
-      @item = Item.find(params[:id])
-  end
-    
->>>>>>> 9d068e2549407e90fe43cd30deaa033ce1974e28
-    def update
+    def show
         @item = Item.find(params[:id])
-        @item.update(item_params)
-        redirect_to admin_item_path(@item.id)
     end
 
-    def edit
-        @item = Item.find_by(params[:id])
-        @genres = Genre.all
-    end
+  def update
+      @item = Item.find(params[:id])
+      @item.update(item_params)
+      redirect_to admin_item_path(@item.id)
+  end
 
+  def edit
+      @item = Item.find_by(params[:id])
+      @genres = Genre.all
+  end
 
+  private
 
-    private
+  def item_params
+      params.require(:item).permit(:image, :name, :introduction, :net_price, :status, :genre_id)
+  end
 
-
-    def item_params
-        params.require(:item).permit(:image, :name, :introduction, :net_price, :status, :genre_id)
-    end
-<<<<<<< HEAD
-
-=======
-    
->>>>>>> 9d068e2549407e90fe43cd30deaa033ce1974e28
 
 end
