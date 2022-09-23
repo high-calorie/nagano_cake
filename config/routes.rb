@@ -10,7 +10,7 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-  end
+  
   
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
@@ -32,7 +32,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
-end
 
+end
 
 
