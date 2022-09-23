@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   namespace :admin do
+
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
     get 'homes/top'
