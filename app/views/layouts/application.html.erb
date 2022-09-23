@@ -11,8 +11,15 @@
   </head>
 
   <body>
-    <%= render 'layouts/header' %>
-    
+    <header>
+      <% if request.path == 'admin' %>
+        <%= render 'layouts/header' %>
+      <% else %>
+        <%= render 'layouts/header_public' %>
+      <% end %>
+      <%= render 'layouts/search' %>
+    </header>
+
     <%= yield %>
   </body>
 </html>
