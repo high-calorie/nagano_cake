@@ -10,7 +10,9 @@ class Item < ApplicationRecord
     end
   end
     
-    
+  def add_tax_net_price
+   (self.net_price * 1.10).round
+  end    
     
     
 
