@@ -6,7 +6,7 @@
     </div>
 
     <div class='col-md-8 offset-md-1'>
-      <h2>商品一覧 全<%= @items.where('created_at > ?', Date.today).count %>件</h2>
+      <h2>商品一覧 全<%= @items.where('created_at > ?').count %>件</h2>
       <!--kaminari 導入検討中-->
       <th colspan="3"></th>
     <%= render 'index', items: @items %>

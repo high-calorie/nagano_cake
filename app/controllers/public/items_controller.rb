@@ -5,7 +5,7 @@ class Public::ItemsController < ApplicationController
       @genres = Genre.all
     if params[:item_id].present?
       #presentメソッドでparams[:item_id]に値が含まれているか確認 => trueの場合下記を実行
-      @item = Item.find_by(params[:item_id])
+      @item = Item.find(params[:id])
       @items = @genre.items
     end
   end
@@ -16,8 +16,9 @@ class Public::ItemsController < ApplicationController
 
   def show
       @items = Item.all
-      @item = Item.find_by(params[:item_id])
+      @item = Item.find(params[:id])
       @genres = Genre.all
+      @cart_item = CartItem.new
   end
 
   private
