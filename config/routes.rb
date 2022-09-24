@@ -10,7 +10,8 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-  end
+    get '/my_page' => 'customers#show'
+  
   
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
