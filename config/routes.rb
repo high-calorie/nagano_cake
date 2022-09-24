@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
@@ -10,16 +11,14 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-  end
-  
-  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
-  get 'homes/top'
+
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
     get 'customers/show'
     get 'customers/edit'
-  end
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
+  end
 
     get "search" => "searches#search"
 
