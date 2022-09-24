@@ -1,7 +1,9 @@
 class CartItem < ApplicationRecord
 
     has_many :customer
-    has_many :item
+    belongs_to :order
+    belongs_to :item
+
     has_one_attached :image
 
     def subtotal
