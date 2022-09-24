@@ -11,6 +11,7 @@
 # It's strongly recommended that you check this file into your version control system.
 
 ActiveRecord::Schema.define(version: 2022_09_21_165528) do
+ActiveRecord::Schema.define(version: 2022_09_21_102133) do
 
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
@@ -39,6 +40,8 @@ ActiveRecord::Schema.define(version: 2022_09_21_165528) do
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
+
+  ActiveRecord::Schema.define(version: 2022_09_20_073517) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false

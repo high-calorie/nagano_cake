@@ -17,5 +17,10 @@
   <%= f.text_field :name, autocomplete: "name" %>
 </div>
 
+<%= f.submit '登録する' ,class: "col-xs-2 btn-success " %>
 
 <% end %>
+
+<div>
+  <%= render "index", deliveries: @deliveries %>
+</div>
