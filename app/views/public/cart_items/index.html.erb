@@ -19,9 +19,9 @@
       </td>
       <td><%= cart_item.item.add_tax_net_price %></td>
           <% @total += cart_item.subtotal %>
-    <%= form_with model :@cart_item, url: public_cart_item_path(cart_item), method: :patch,local: true do |f| %>
+    <%= form_with model: @cart_item, url: public_cart_item_path(cart_item), method: :patch,local: true do |f| %>
       <td>
-        <%= f.select :quantity,*[1..10], cart_item.amount.to_i  %>
+        <%= f.select :quantity,*[1..10], cart_item.quantityt.to_i  %>
         <%= f.submit '変更' %>
       </td>
       <td><%= cart_item.subtotal %>円</td>
