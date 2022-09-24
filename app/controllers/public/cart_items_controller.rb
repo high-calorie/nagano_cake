@@ -15,6 +15,8 @@ class Public::CartItemsController < ApplicationController
       cart_item.quantity += params[:cart_item][:quantity].to_i
       cart_item.save
       redirect_to public_cart_items_path
+    elsif @cart_item.save
+      redirect_to public_cart_items_path
     else
       redirect_to public_items_path
     end
@@ -39,6 +41,6 @@ class Public::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-      params.require(:cart_item).permit(:name, :item_id, :quantity)
+      params.require(:cart_item).permit(:item_id, :quantity)
   end
 end
