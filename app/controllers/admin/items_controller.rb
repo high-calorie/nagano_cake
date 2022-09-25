@@ -16,10 +16,10 @@ class Admin::ItemsController < ApplicationController
         @item = Item.new(item_params)
          if @item.save
          redirect_to admin_item_path(@item)
-    else
+         else
       render 'new'
+         end
     end
-  end
 
     def show
         @item = Item.find(params[:id])

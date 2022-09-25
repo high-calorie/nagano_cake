@@ -15,6 +15,7 @@ Rails.application.routes.draw do
         get 'confirm' => 'orders#confirm'
         end
     end
+    get '/my_page' => 'customers#show'
   
   
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
