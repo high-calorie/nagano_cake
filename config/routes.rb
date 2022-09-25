@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
 
+
   scope module: :public do
+
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
@@ -20,25 +22,38 @@ Rails.application.routes.draw do
   
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
+
+
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+
     get 'customers/show'
     get 'customers/edit'
-  end
+
+    resources :orders,only: [:new,:index,:show,:create] do
+    end
+
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-
+    resources :orders, only: [:index]
     get "search" => "searches#search"
+
+    get 'homes/top'
+    get 'homes/about'
+  end
+
 
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
 
+end
 
 
 end
