@@ -14,11 +14,12 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
 
-    get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
-    patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
-    put 'withdraw/:name' => 'users#withdraw'
+    get 'unsubscribe/:name' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+    patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:name' => 'customers#withdraw'
+
   
-  
+
 
 
     resources :orders do
@@ -60,5 +61,4 @@ Rails.application.routes.draw do
   }
 
 end
-
 
