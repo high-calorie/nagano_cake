@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
     get 'homes/top'
+    resources :order_details, only: [:update]
   end
 
   namespace :public do
