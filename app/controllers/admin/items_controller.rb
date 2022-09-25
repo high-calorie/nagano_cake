@@ -3,11 +3,11 @@ class Admin::ItemsController < ApplicationController
 
     def index
         @items = Item.all
-        @item = Item.find(params[:id])
+        @item = Item.new
+        #@item = Item.find(params[:id])
     end
 
     def new
-
         @item = Item.new
         @genre = Genre.all
     end
