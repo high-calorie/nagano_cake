@@ -14,6 +14,13 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
 
+    get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
+    put 'withdraw/:name' => 'users#withdraw'
+  
+  
+
+
     resources :orders do
         collection do
         get 'confirm' => 'orders#confirm'
@@ -28,6 +35,7 @@ Rails.application.routes.draw do
 
 
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+
 
     get 'customers/show'
     get 'customers/edit'
