@@ -13,6 +13,12 @@
   <body>
 
     <header>
+      <% if request.path == 'admin' %>
+        <%= render 'layouts/header' %>
+      <% else %>
+        <%= render 'layouts/header_public' %>
+      <% end %>
+      <%#= render 'layouts/search' %>
       <nav class="navbar navbar-dark bg-dark">
         <div class = "col-12 text-center" >
           <%= image_tag 'header.png', size: "170x100" %>
