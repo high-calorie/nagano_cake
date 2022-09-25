@@ -32,9 +32,7 @@ Rails.application.routes.draw do
     get 'customers/show'
     get 'customers/edit'
 
-
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
-
     resources :cart_items, only: [:index, :create, :update, :destroy]
 
     get "search" => "searches#search"
