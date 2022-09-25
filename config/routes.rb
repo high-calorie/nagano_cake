@@ -6,11 +6,16 @@ Rails.application.routes.draw do
     get 'homes/top'
   end
 
-  namespace :public do
+  scope module: :public do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-  end
+    resources :order do
+        collection do
+        get 'confirm' => 'orders#confirm'
+        end
+    end
+  
   
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
@@ -32,7 +37,7 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"
 }
 
+
+
+
 end
-
-
-
