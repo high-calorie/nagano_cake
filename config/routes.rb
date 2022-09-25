@@ -7,10 +7,16 @@ Rails.application.routes.draw do
   end
 
 
-  namespace :public do
+  scope module: :public do
+
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
+    resources :order do
+        collection do
+        get 'confirm' => 'orders#confirm'
+        end
+    end
     get '/my_page' => 'customers#show'
   
   
@@ -50,3 +56,4 @@ Rails.application.routes.draw do
 end
 
 
+end
