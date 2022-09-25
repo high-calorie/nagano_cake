@@ -1,9 +1,9 @@
 
 <div class="container px-5 px-sm-0">
    <div class="row">
-      <div class="col-md-10 offset-md-1"> 
+      <div class="col-md-10 offset-md-1">
         <h2>ショッピングカート</h2>
-        <%= link_to "カートを空にする", public_cart_items_destroy_all_path, method: :delete %>
+        <%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete %>
         <table class="table table-hover table-inverse">
           <thead>
             <tr>
@@ -18,12 +18,12 @@
             <% @cart_items.each do |cart_item| %>
             <tr>
               <td>
-                <%= image_tag cart_item.item.image %>
+                <%= image_tag cart_item.item.image, size:"60x40" %>
                 <%= cart_item.item.name %>
               </td>
               <td><%= cart_item.item.add_tax_net_price %></td>
                   <% @total += cart_item.subtotal %>
-            <%= form_with model: @cart_item, url: public_cart_item_path(cart_item), method: :patch,local: true do |f| %>
+            <%= form_with model: @cart_item, url: cart_item_path(cart_item), method: :patch,local: true do |f| %>
               <td>
                 <%= f.select :quantity,*[1..10], value: cart_item.quantity  %>
                 <%= f.submit '変更' %>
@@ -31,7 +31,7 @@
               <td><%= cart_item.subtotal %>円</td>
             <% end %>
               <td><%= cart_item.subtotal %></td>
-              <td><%= link_to "消去する", public_cart_item_path(cart_item), method: :delete %></td>
+              <td><%= link_to "消去する", cart_item_path(cart_item), method: :delete %></td>
             </tr>
             <% end %>
           </tbody>
@@ -42,14 +42,14 @@
 
           <div>
              <div>
-                <%= link_to "買い物を続ける", public_items_path %>
+                <%= link_to "買い物を続ける", items_path %>
              </div>
              <div>
                 合計金額
                 <% @total %>円
              </div>
              <div>
-                <%= link_to "情報入力に進む", new_public_order_path %>
+                <%= link_to "情報入力に進む", new_order_path %>
              </div>
           </div>
 
