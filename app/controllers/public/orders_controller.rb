@@ -3,6 +3,15 @@ class Public::OrdersController < ApplicationController
     def new
         @order = Order.new
     end
+    
+    def index
+    @orders = Order.all
+
+    def show
+      @order = Order.find(params[:id])
+      @order_details = @order.order_details
+      @total = 0
+    end
 
     def create
       cart_items = current_customer.cart_items.all
@@ -77,5 +86,7 @@ class Public::OrdersController < ApplicationController
     def address_params
       params.require(:order).permit(:name, :address)
     end
-
+  
 end
+
+
