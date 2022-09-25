@@ -1,5 +1,6 @@
 class Public::OrdersController < ApplicationController
 
+
     def new
         @order = Order.new
     end
@@ -87,6 +88,7 @@ class Public::OrdersController < ApplicationController
       params.require(:order).permit(:name, :address)
     end
   
+
 end
 
 

@@ -12,7 +12,14 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
 
+  
+  
+  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+  get 'homes/top'
+
+
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+
     get 'customers/show'
     get 'customers/edit'
 
@@ -39,7 +46,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-end
 
+end
 
 
