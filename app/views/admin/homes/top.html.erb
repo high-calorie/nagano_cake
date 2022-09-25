@@ -1,7 +1,11 @@
 <h1>注文履歴一覧</h1>
+  <% @orders.each do |orders| %>
+  <p>購入日時<%= orders.created_at.strftime('%Y/%m/%d') %></p>
+  <p>購入者<%= orders.customers.last_name %><%= orders.customers.first_name %></p>
+  <% end %>
+  <p><%= paginate @orders %></p>
+  <% @order_details.each do |order_detail| %>
+  <p>注文個数<%= order_detail.quantity %></p>
+  <% end %>
+  <p>注文ステータス</p>
 
-<p>購入日時<%= @orders.created_at.strftime('%Y/%m/%d') %></p>#フォーマット調整
-<p>購入者<%= @orders.customers.last_name %><%= @oders.customers.first_name %></p>
-<p>注文個数<%= @order_details.quantity %></p>
-<p>注文ステータス</p>
-<p></p>#ページネーション
