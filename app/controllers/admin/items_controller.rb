@@ -7,19 +7,18 @@ class Admin::ItemsController < ApplicationController
     end
 
     def new
-
         @item = Item.new
         @genre = Genre.all
     end
 
-  def create
-    @item = Item.new(item_params)
-    if @item.save
-      redirect_to admin_item_path(@item)
-    else
+    def create
+        @item = Item.new(item_params)
+         if @item.save
+         redirect_to admin_item_path(@item)
+         else
       render 'new'
+         end
     end
-  end
 
   def edit
       @item = Item.find_by(params[:id])
