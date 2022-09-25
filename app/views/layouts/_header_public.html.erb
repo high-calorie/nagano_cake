@@ -1,11 +1,30 @@
-    <% if customer_signed_in? %>
-      <%= link_to "マイページ" %>
-      <%= link_to "商品一覧" %>
-      <%= link_to "カート" %>
-      <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-    <% else %>
-      <%= link_to "About", public_homes_about_path %>
-      <%= link_to "商品一覧", admin_items_path %>
-      <%= link_to "新規登録", new_customer_registration_path %>
-      <%= link_to "ログイン" , new_customer_session_path%>
-    <% end %>
+
+<% if customer_signed_in? %>
+<div class = "col-4 text-center">ようこそ<%= current_customer.last_name %>さん</div>
+<div class = "col-1 text-center">
+  <%= link_to "マイページ" %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "商品一覧" %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "カート" %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+</div>
+<% else %>
+<div class = "col-4 text-center"></div>
+<div class = "col-1 text-center">
+  <%= link_to "About", public_homes_about_path %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "商品一覧", admin_items_path %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "新規登録", new_customer_registration_path %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "ログイン" , new_customer_session_path%>
+</div>
+

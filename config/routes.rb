@@ -3,38 +3,63 @@ Rails.application.routes.draw do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
+    resources :orders, only: [:show, :update]
     get 'homes/top'
+
   end
 
-  namespace :public do
+  scope module: :public do
+
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
+
     get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
     patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
     put 'withdraw/:name' => 'users#withdraw'
   
-  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
-  get 'homes/top'
+  
+
+
+    resources :orders do
+        collection do
+        get 'confirm' => 'orders#confirm'
+        end
+    end
+
+    get '/my_page' => 'customers#show'
+
+
+    resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+    get 'homes/top'
+
+
+    resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
+
+
     get 'customers/show'
     get 'customers/edit'
-  end
+
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+
     resources :cart_items, only: [:index, :create, :update, :destroy]
 
     get "search" => "searches#search"
+
+  end
+
 
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-  sessions: "admin/sessions"
-}
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
 end
 
-
+end
 
