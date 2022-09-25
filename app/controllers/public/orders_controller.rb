@@ -10,7 +10,6 @@ class Public::OrdersController < ApplicationController
       @order = current_customer.orders.new(order_params)
     # 渡ってきた値を @order に入れます
       if @order.save
-    # ここに至るまでの間にチェックは済ませていますが、念の為IF文で分岐させています
         cart_items.each do |cart|
     # 取り出したカートアイテムの数繰り返します
     # order_item にも一緒にデータを保存する必要があるのでここで保存します
@@ -72,7 +71,7 @@ class Public::OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:payment_method, :postal_code, :shipping_address, :name, :postage, :total_price, :orders_status )
+        params.require(:order).permit(:payment_method, :postal_code, :shipping_address, :name, :postage, :total_price, :orders_status, :customer_id, )
     end
 
     def address_params
