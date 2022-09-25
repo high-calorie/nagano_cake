@@ -5,10 +5,11 @@ class Public::OrdersController < ApplicationController
     def new
         @order = Order.new
     end
-    
+
 
     def index
     @orders = Order.all
+    end
 
     def show
       @order = Order.find(params[:id])
@@ -25,7 +26,7 @@ class Public::OrdersController < ApplicationController
         cart_items.each do |cart|
     # 取り出したカートアイテムの数繰り返します
     # order_item にも一緒にデータを保存する必要があるのでここで保存します
-          order_item = OrderItem.new
+          order_item = Order.items.new
           order_item.item_id = cart.item_id
           order_item.order_id = @order.id
           order_item.order_quantity = cart.quantity
@@ -57,7 +58,7 @@ class Public::OrdersController < ApplicationController
             @order.postal_code = current_customer.postal_code
             @order.shippig_address = current_customer.shippig_address
             @order.name = current_customer.first_name + current_customer.last_name
-            
+
         #登録済みの住所の場合
         elsif params[:order][:select_address] == "1"
         if  params[:order][:customer_id] == ""
@@ -70,7 +71,7 @@ class Public::OrdersController < ApplicationController
             @order.shippig_address = @address.shippig_address
             @order.name = @address.name
         end
-            
+
         # 新しいお届け先
         elsif params[:order][:select_address] = "2"
             @order = Order.new
@@ -79,6 +80,8 @@ class Public::OrdersController < ApplicationController
             @order.name = params[:order][:name]
             @order.payment_method = params[:order][:payment_method]
         end
+    end
+
 
     private
 
@@ -87,11 +90,13 @@ class Public::OrdersController < ApplicationController
     end
 
 
+
+
     def address_params
       params.require(:order).permit(:name, :address)
     end
-  
 
 end
+
 
 
