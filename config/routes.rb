@@ -10,7 +10,9 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-  end
+    get 'unsubscribe/:name' => 'homes#unsubscribe', as: 'confirm_unsubscribe'
+    patch ':id/withdraw/:name' => 'homes#withdraw', as: 'withdraw_user'
+    put 'withdraw/:name' => 'users#withdraw'
   
   resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
   get 'homes/top'
