@@ -1,0 +1,26 @@
+<div class='container px-5 px-sm-0'>
+  <div class='row'>
+
+    <div class='col-md-3'>
+    <%= render 'genresearch', genres: @genres %>
+    </div>
+
+    <div class='col-md-8 offset-md-1'>
+
+    <td>
+    <%= image_tag @item.image, size:"230x200" %>
+    </td>
+
+    <h2><%= @item.name %></h2>
+    <h1><%= @item.add_tax_net_price.to_s(:delimited) %>(<%= @item.net_price.to_s(:delimited) %>)円</h1>
+    <h2><%= @item.introduction %></h2>
+
+
+    <%= form_with model: @cart_item, url: cart_items_path, method: :post, local: true do |f| %>
+    <%= f.hidden_field :item_id, :value => @item.id %>
+    <td><%= f.select :quantity, [1, 2, 3], {include_blank: '個数選択'} %></td>
+    <td><%= f.submit 'カートに入れる' %></td>
+    </div>
+    <% end %>
+  </div>
+</div>
