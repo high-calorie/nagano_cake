@@ -3,37 +3,49 @@ Rails.application.routes.draw do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
+    resources :orders, only: [:show, :update]
     get 'homes/top'
+    resources :order_details, only: [:update]
   end
 
+  scope module: :public do
 
-  namespace :public do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
+
+    get 'unsubscribe/:name' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+    patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
+    put 'withdraw/:name' => 'customers#withdraw'
+
+  
+
+
+
+    resources :orders do
+        collection do
+        get 'confirm' => 'orders#confirm'
+        end
+    end
+
     get '/my_page' => 'customers#show'
-  
-  
-  resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
-  get 'homes/top'
+
+
+    resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
+    get 'homes/top'
 
 
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
+
     get 'customers/show'
     get 'customers/edit'
 
-    resources :orders,only: [:new,:index,:show,:create] do
-    end
-
-
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
-    resources :orders, only: [:index]
+
     get "search" => "searches#search"
 
-    get 'homes/top'
-    get 'homes/about'
   end
 
 
@@ -46,7 +58,5 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
-
 end
-
 
