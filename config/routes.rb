@@ -5,7 +5,7 @@ Rails.application.routes.draw do
     resources :items, except: [:destroy]
     resources :orders, only: [:show, :update]
     get 'homes/top'
-
+    resources :order_details, only: [:update]
   end
 
   scope module: :public do
