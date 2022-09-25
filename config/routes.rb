@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
+    resources :orders,only: [:new,:index,:show,:create] do
   end
 
     get "search" => "searches#search"
@@ -34,4 +35,4 @@ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
 end
 
 
-
+end

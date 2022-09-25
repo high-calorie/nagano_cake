@@ -4,15 +4,15 @@ class Public::OrdersController < ApplicationController
             @postage = 800
             @cart_items = current_customer.cart_items.all
             @total = @cart_items.inject(0) { |sum, item| sum + item.sum_of_price }
-            
-            
+
+
         #自身の住所の場合
         #if params[:order][:] == "0"
             @order = Order.new(order_params)
             @order.postal_code = current_customer.postal_code
             @order.shippig_address = current_customer.shippig_address
             @order.name = current_customer.first_name + current_customer.last_name
-            
+
         #登録済みの住所の場合
         #elsif params[:order][:] == "1"
         if  params[:order][:customer_id] == ""
@@ -25,7 +25,7 @@ class Public::OrdersController < ApplicationController
             @order.shippig_address = @address.shippig_address
             @order.name = @address.name
         end
-            
+
         # 新しいお届け先
         #elsif params[:order][:] = "2"
             @order = Order.new
@@ -35,12 +35,12 @@ class Public::OrdersController < ApplicationController
             @order.payment_method = params[:order][:payment_method]
         end
 
-    
-    
-    
+
+
+
     private
     def order_params
         params.require(:order).permit(:payment_method, :postal_code, :shipping_address, :name, :postage, :total_price, :orders_status )
     end
-    
+
 end
