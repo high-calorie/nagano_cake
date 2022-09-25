@@ -1,5 +1,6 @@
 class Public::CustomersController < ApplicationController
     
+<<<<<<< HEAD
   def show
       @customer = current_customer
   end
@@ -14,6 +15,12 @@ class Public::CustomersController < ApplicationController
     reset_session
     redirect_to root_path
   end
+=======
+    def show
+        @customer = current_customer
+    end
+    
+>>>>>>> origin/taikaikinou.public.customers
     
  private
  
