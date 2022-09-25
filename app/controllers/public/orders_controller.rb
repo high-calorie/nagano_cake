@@ -5,10 +5,11 @@ class Public::OrdersController < ApplicationController
     def new
         @order = Order.new
     end
-    
+
 
     def index
     @orders = Order.all
+    end
 
     def show
       @order = Order.find(params[:id])
@@ -25,7 +26,7 @@ class Public::OrdersController < ApplicationController
         cart_items.each do |cart|
     # 取り出したカートアイテムの数繰り返します
     # order_item にも一緒にデータを保存する必要があるのでここで保存します
-          order_item = OrderItem.new
+          order_item = Order.items.new
           order_item.item_id = cart.item_id
           order_item.order_id = @order.id
           order_item.order_quantity = cart.quantity
@@ -79,6 +80,7 @@ class Public::OrdersController < ApplicationController
             @order.name = params[:order][:name]
             @order.payment_method = params[:order][:payment_method]
         end
+    end
 
 
     private
@@ -93,9 +95,8 @@ class Public::OrdersController < ApplicationController
     def address_params
       params.require(:order).permit(:name, :address)
     end
-  
-
 
 end
+
 
 
