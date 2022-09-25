@@ -51,5 +51,7 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+end
 
 end
+

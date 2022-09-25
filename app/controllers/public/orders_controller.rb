@@ -57,7 +57,7 @@ class Public::OrdersController < ApplicationController
             @order.postal_code = current_customer.postal_code
             @order.shippig_address = current_customer.shippig_address
             @order.name = current_customer.first_name + current_customer.last_name
-            
+
         #登録済みの住所の場合
         elsif params[:order][:select_address] == "1"
         if  params[:order][:customer_id] == ""
@@ -70,7 +70,7 @@ class Public::OrdersController < ApplicationController
             @order.shippig_address = @address.shippig_address
             @order.name = @address.name
         end
-            
+
         # 新しいお届け先
         elsif params[:order][:select_address] = "2"
             @order = Order.new
@@ -80,6 +80,7 @@ class Public::OrdersController < ApplicationController
             @order.payment_method = params[:order][:payment_method]
         end
 
+
     private
 
     def order_params
@@ -87,10 +88,13 @@ class Public::OrdersController < ApplicationController
     end
 
 
+
+
     def address_params
       params.require(:order).permit(:name, :address)
     end
   
+
 
 end
 
