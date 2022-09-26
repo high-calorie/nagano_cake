@@ -1,5 +1,15 @@
 Rails.application.routes.draw do
 
+
+ devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
   namespace :admin do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
@@ -45,16 +55,6 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
   end
-
-
- devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
 
 end
 
