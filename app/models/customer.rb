@@ -15,7 +15,7 @@ class Customer < ApplicationRecord
   end
 
 
-  has_many :addresses
+  has_many :deliveries, dependent: :destroy
   has_one_attached :image
-  has_many :orders
+  has_many :orders, dependent: :destroy
 end
