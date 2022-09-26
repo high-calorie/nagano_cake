@@ -1,0 +1,79 @@
+<h2>会員情報編集</h2>
+<%= form_with model: @customer, url: customer_path, method: :patch do |f| %>
+ <table>
+   <thead>
+        <tr>
+          <div class="field">
+          <th><%= f.label :first_name, "氏名" %></th>
+          </div>
+          <div class="field">
+          </div>
+          <td><%= f.text_field :last_name, autofocus: true, autocomplete: "last_name" %></td>
+          </div>
+          <div class="field">
+          <td><%= f.text_field :first_name, autocomplete: "first_name" %></td>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="field">
+          <th><%= f.label :first_name_kana, "フリガナ" %></th>
+          </div>
+          <div class="field">
+          <th><%= f.text_field :last_name_kana %></th>
+          </div>
+          <div class="field">
+          <th><%= f.text_field :first_name_kana %></th>
+          </div>
+        </tr>
+
+        <tr>
+          <div class="field">
+          <th><%= f.label :postcode, "郵便番号（ハイフンなし）" %></th>
+          </div>
+          <div class="field">
+          <th><%= f.text_field :postcode, autocomplete: "postal-code" %><th>
+          </div>
+        <tr>
+
+        <tr>
+          <div class="field">
+          <th><%= f.label :address, "住所" %></th>
+          </div>
+          <div class="field">
+          <th><%= f.text_field :address, autocomplete: "address" %></th>
+          </div>
+      </tr>
+
+       <tr>
+         <div class="field">
+         <th><%= f.label :phone_number, "電話番号（ハイフンなし）" %></th>
+         </div>
+         <div class="field">
+         <th><%= f.text_field :phone_number, autocomplete: "phone_namber" %></th>
+         </div>
+       </tr>
+
+        <tr>
+          <div class="field">
+          <th><%= f.label :email, "メールアドレス" %></th>
+          </div>
+          <div class="field">
+          <th><%= f.email_field :email, autocomplete: "email" %></th>
+          </div>
+        </tr>
+      </div>
+   </thead>
+ </table>
+
+      <div class="mb-3">
+        <%= f.submit "編集内容を保存" %>
+      </div>
+
+      <div class="mb-3">
+        <%= link_to "退会する", public_unsubscribe_path %>
+      </div>
+
+  <% end %>
+
+
