@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  namespace :public do
+    get 'customers/edit'
+  end
   namespace :admin do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
