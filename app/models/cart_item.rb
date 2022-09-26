@@ -1,8 +1,9 @@
 class CartItem < ApplicationRecord
 
-    has_many :customer
-    has_many :item
+    belongs_to :customer
+    belongs_to :item
     has_one_attached :image
+    validates :quantity, presence: true
 
     def subtotal
         item.add_tax_net_price * quantity
