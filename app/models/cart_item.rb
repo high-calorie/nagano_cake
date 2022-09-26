@@ -9,4 +9,8 @@ class CartItem < ApplicationRecord
         item.add_tax_net_price * quantity
     end
 
+    def sum_of_price
+        item.net_price * quantity
+    end
+
 end
