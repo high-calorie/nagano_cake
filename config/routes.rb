@@ -1,9 +1,18 @@
 Rails.application.routes.draw do
 
+    devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+
   namespace :admin do
     get 'orders/show'
-  end
-  namespace :admin do
+
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
@@ -40,7 +49,7 @@ Rails.application.routes.draw do
 
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
-    resources :customers, only: [:show, :edit, :update]
+    resources :customers
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
@@ -49,14 +58,5 @@ Rails.application.routes.draw do
 
   end
 
-  devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
 
 end
-
