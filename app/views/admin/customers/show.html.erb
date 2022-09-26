@@ -1,12 +1,51 @@
-<h1><%= @customers.last_name %><%= @customers.first_name %>さんの会員詳細</h1>
-
-<p>会員ID<%= @customers.customers_id %></p>
-<p>氏名<%= @customers.last_name %><%= @customers.first_name %></p>
-<p>フリガナ<%= @customers.last_name_kana %><%= @customers.first_name_kana %></p>
-<p>郵便番号<%= @customers.customers_id %></p>
-<p>住所<%= @customers.post_code %></p>
-<p>電話番号<%= @customers.phone_namber %></p>
-<p>メールアドレス<%= @customers.address %></p>
-<p>会員ステータス</p>   #未記入
-<p>編集する</p>
-<p>注文履歴一覧を見る</p>
+<div class = "container">
+  <table class="table table-borderless">
+    <br>
+    <tr>
+      <td class = "text-center"><font size=5px><%= @customers.last_name %><%= @customers.first_name %>さんの会員詳細</td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom", width = "30%">会員ID</td>
+      <td class = "border-bottom"><%= @customers.id %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">氏名</td>
+      <td class = "border-bottom"><%= @customers.last_name %></td>
+      <td class = "border-bottom"><%= @customers.first_name %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">フリガナ</td>
+      <td class = "border-bottom"><%= @customers.last_name_kana %></td>
+      <td class = "border-bottom"><%= @customers.first_name_kana %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">郵便番号</td>
+      <td class = "border-bottom"><%= @customers.post_code %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">住所</td>
+      <td class = "border-bottom"><%= @customers.post_code %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">電話番号</td>
+      <td class = "border-bottom"><%= @customers.phone_namber %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">メールアドレス</td>
+      <td class = "border-bottom"><%= @customers.address %></td>
+    </tr>
+    <tr>
+      <td class = "text-center border-bottom">会員ステータス</td>
+      <td class = "border-bottom"><% if @customers.withdrawal_flag? %>
+        <span>退会</span>
+        <% else %>
+        <span>有効</span>
+        <% end %>
+      </td>
+    <tr>
+      <td></td>
+      <td><%= link_to "編集する", edit_admin_customer_path(@customers) %></td>
+      <td><%= link_to "注文履歴一覧を見る", admin_homes_top_path %></td>
+    </tr>
+  </table>
+</div>
