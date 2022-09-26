@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
 
   namespace :admin do
+    get 'orders/show'
+  end
+  namespace :admin do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
@@ -46,8 +49,7 @@ Rails.application.routes.draw do
 
   end
 
-
- devise_for :customers,skip: [:passwords], controllers: {
+  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
