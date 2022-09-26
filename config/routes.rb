@@ -7,6 +7,8 @@ Rails.application.routes.draw do
     resources :orders, only: [:show, :update]
     get 'homes/top'
     resources :order_details, only: [:update]
+    resources :customers
+
   end
 
   scope module: :public do
@@ -19,8 +21,8 @@ Rails.application.routes.draw do
     patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
 
-
     post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+
 
 
     resources :orders
