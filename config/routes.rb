@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   namespace :admin do
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
@@ -18,10 +19,6 @@ Rails.application.routes.draw do
     patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
 
-  
-
-
-
     resources :orders do
         collection do
         get 'confirm' => 'orders#confirm'
@@ -37,9 +34,7 @@ Rails.application.routes.draw do
 
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
-
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers, only: [ :show, :edit, :update]
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
