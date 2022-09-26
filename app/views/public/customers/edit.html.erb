@@ -29,10 +29,10 @@
 
         <tr>
           <div class="field">
-          <th><%= f.label :postcode, "郵便番号（ハイフンなし）" %></th>
+          <th><%= f.label :post_code, "郵便番号（ハイフンなし）" %></th>
           </div>
           <div class="field">
-          <th><%= f.text_field :postcode, autocomplete: "postal-code" %><th>
+          <th><%= f.text_field :post_code, autocomplete: "postal-code" %><th>
           </div>
         <tr>
 
@@ -41,16 +41,16 @@
           <th><%= f.label :address, "住所" %></th>
           </div>
           <div class="field">
-          <th><%= f.text_field :address, autocomplete: "address" %></th>
+          <th><%= f.text_field :address %></th>
           </div>
       </tr>
 
        <tr>
          <div class="field">
-         <th><%= f.label :phone_number, "電話番号（ハイフンなし）" %></th>
+         <th><%= f.label :phone_namber, "電話番号（ハイフンなし）" %></th>
          </div>
          <div class="field">
-         <th><%= f.text_field :phone_number, autocomplete: "phone_namber" %></th>
+         <th><%= f.text_field :phone_namber %></th>
          </div>
        </tr>
 
@@ -71,7 +71,7 @@
       </div>
 
       <div class="mb-3">
-        <%= link_to "退会する", public_unsubscribe_path %>
+        <%= link_to "退会する", confirm_unsubscribe_path %>
       </div>
 
   <% end %>

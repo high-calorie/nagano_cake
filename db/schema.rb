@@ -109,6 +109,8 @@ ActiveRecord::Schema.define(version: 2022_09_23_043906) do
     t.integer "tax_included_price"
     t.integer "quantity"
     t.integer "make_status"
+    t.integer "item_id"
+    t.integer "order_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
