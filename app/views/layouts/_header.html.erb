@@ -1,11 +1,11 @@
     <% if customer_signed_in? %>
-            <%= link_to "商品一覧", admin_items_path %>
-            <%=  link_to "会員一覧" %>
+            <font color="white"><%= link_to "商品一覧", admin_items_path %></font>
+            <div class = "col-1 text-center"><%=  link_to "会員一覧" %></div>
             <%=  link_to "注文履歴一覧" %>
             <%= link_to "ジャンル一覧",admin_genres_path %>
             <%= link_to "ログアウト" %>
         <% else %>
-            <%= link_to "アバウト" %>
+            <font color="white"><%= link_to "アバウト" %></font>
             <%= link_to "商品一覧", admin_items_path %>
             <%= link_to "新規登録" %>
             <%= link_to "ログイン" %>
