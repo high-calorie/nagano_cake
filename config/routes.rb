@@ -27,14 +27,17 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-    get '/my_page' => 'customers#show'
+
     get "/unsubscribe" => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
 
     post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    get 'orders/thanx' => 'orders#thanx', as: 'thanx'
 
-    resources :orders, only:[:new, :create, :index, :show]
+
+
+    resources :orders
 
 
     get '/my_page' => 'customers#show'

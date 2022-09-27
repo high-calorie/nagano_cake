@@ -8,7 +8,7 @@ class Public::OrdersController < ApplicationController
 
 
     def index
-    @orders = Order.all
+    @order = current_customer.orders.all
     @order_details = OrderDetail.all
     end
 
@@ -37,7 +37,7 @@ class Public::OrdersController < ApplicationController
     # カート情報を削除するので item との紐付けが切れる前に保存します
           order_item.save
         end
-        redirect_to orders_path
+        redirect_to thanx_path
         cart_items.destroy_all
     # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
       else
@@ -46,6 +46,9 @@ class Public::OrdersController < ApplicationController
       end
     end
 
+    def thanx
+
+    end
 
     def confirm
         @order = Order.new(order_params)
@@ -57,8 +60,8 @@ class Public::OrdersController < ApplicationController
     #自身の住所の場合
         if params[:order][:select_address] == "0"
             @order = Order.new(order_params)
-            @order.postal_code = current_customer.postal_code
-            @order.shippig_address = current_customer.shippig_address
+            @order.postal_code = current_customer.post_code
+            @order.shipping_address = current_customer.address
             @order.name = current_customer.first_name + current_customer.last_name
 
         #登録済みの住所の場合
@@ -68,9 +71,9 @@ class Public::OrdersController < ApplicationController
             redirect_to new_order_path
         else
             @order = Order.new(order_params)
-            @address = Address.find(params[:order][:customers_id])
-            @order.postal_code = @address.postal_code
-            @order.shippig_address = @address.shippig_address
+            @address = Deliveries.find(params[:order][:customers_id])
+            @order.postal_code = @address.post_code
+            @order.shippig_address = @address.address
             @order.name = @address.name
         end
 
