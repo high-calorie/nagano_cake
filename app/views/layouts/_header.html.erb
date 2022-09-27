@@ -37,6 +37,8 @@
     </p>
     <% end %>
 <% elsif customer_signed_in? %>
+<div class = "col-4 text-center text-primary"></div>
+<div class = "col-1 text-center">
 <ul class = "col-4 text-center text-primary text-white">
     <p class="text-white">
     ようこそ<%= current_customer.last_name %>さん
@@ -76,6 +78,7 @@
     <% end %>
     </li>
   </ul>
+</div>
 </div>
 <% else %>
 <ul class="list-inline">
