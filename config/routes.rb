@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
+ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
 
  devise_for :customers,skip: [:passwords], controllers: {
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
 
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
 
   
 
@@ -31,16 +31,14 @@ Rails.application.routes.draw do
     resources :items, only: [:show, :index]
     get 'homes/top'
     get 'homes/about'
-
+    get '/my_page' => 'customers#show'
     get "/unsubscribe" => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
 
     post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
 
-
-
-    resources :orders
+    resources :orders, only:[:new, :create, :index, :show]
 
 
     get '/my_page' => 'customers#show'

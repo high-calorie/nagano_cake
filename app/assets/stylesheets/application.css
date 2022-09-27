@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+ .bg{
+  background-image: url('/images/background.jpg');
+  background-size:cover;
+  width: 550px;
+  height: 250px;
+}
+
+.body{
+  background-color: black;
+  font-weight: bold;
+  -webkit-background-clip: text;
+  color: rgba(0,0,0,0);
+}
