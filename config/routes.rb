@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 }
 
 
+  
+
   namespace :admin do
     get 'orders/show'
 
@@ -22,7 +24,9 @@ Rails.application.routes.draw do
 
   end
 
+
   scope module: :public do
+   root to: 'public/items#index'
 
     resources :items, only: [:show, :index]
     get 'homes/top'
