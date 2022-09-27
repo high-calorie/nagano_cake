@@ -1,24 +1,39 @@
 <div class='container'>
   <div class='row'>
-    <div class='col-4'>
+    <div class='col-3'>
       <br>
       <br>
       <%= render 'public/items/genresearch', genres: @genres %>
       </div>
-      <div class='col-8'>
+      <div class='col-9'>
         <p>ようこそ、ながのCAKEへ！</p>
         <p>このサイトは、ケーキ販売のECサイトになります。</p>
         <p>会員でない方も商品の閲覧はできますが、</p>
         <p>購入には会員登録が必要になります。</p>
 
       <h1>新着商品</h1>
+      <div class="form-group" >
+        <div class="row">
         <p><% @item.each do |item| %></p>
-          <%= image_tag item.image, size:"100x100" %>
-          <%= item.name %>
-          <%= item.net_price %>
-          <% end %>
-        <p><%= link_to "全ての商品を見る", items_path %></p>
+          <div class="col">
+            <%= image_tag item.image, size:"100x100" %>
+          </div>
+          <div class="col">
+            <%= link_to "item.name",admin_item_path(item) %>
+          </div>
+          <div class="col">
+            <%= item.net_price %>
+          </div>
+          
+         <% end %>
+         
+        <div class="row ">
+          <p><%= link_to "全ての商品を見る", items_path %></p>
+        </div>     
         </div>
       </div>
+  </div>
+       
+    </div>
     </div>
   </div>
