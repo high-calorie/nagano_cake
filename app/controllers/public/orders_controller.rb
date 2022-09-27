@@ -84,10 +84,13 @@ class Public::OrdersController < ApplicationController
     end
 
 
-
-
     def address_params
       params.require(:order).permit(:name, :address, :delivery_id)
+    end
+    
+    
+    def order_item_params
+      params.require(:order_item).permit(:item_id, :order_id, :quantity, :subprice, :order_status)
     end
 
 end

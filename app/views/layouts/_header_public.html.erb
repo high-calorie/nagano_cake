@@ -12,7 +12,7 @@
     </li>
 
     <li class="list-inline-item">
-    <%= link_to items_path do %>
+    <%= link_to items_pathdo do %>
     <p class="text-white">
       商品一覧
     </p>
@@ -28,7 +28,7 @@
     </li>
 
     <li class="list-inline-item">
-    <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+    <%= link_to destroy_customer_session_path, method: :delete do %>
     <p class="text-white">
       ログアウト
     </p>
