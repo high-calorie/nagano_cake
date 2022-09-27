@@ -6,28 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <header>
       <nav class="navbar navbar-dark bg-dark">
-        <div class = "col-12 text-center" >
+        <div class = "text-center" >
           <%= image_tag 'header.png', size: "170x100" %>
         </div>
-              <% if request.path == 'admin' %>
-                <%= render 'layouts/header' %>
-              <% else %>
-                <%= render 'layouts/header_public' %>
-              <% end %>
-              </div>
-              <div class = "col-4 text-right" >
-              <%= render 'layouts/search' %>
-              </div>
-            </div>
-          </div>
+          <% if request.path == 'admin' %>
+            <%= render 'layouts/header' %>
+          <% else %>
+            <%= render 'layouts/header_public' %>
+          <% end %>
         </div>
+        <div class = "col-4 text-right" >
+          <%= render 'layouts/search' %>
+        </div>
+      </nav>
     </header>
     <%= yield %>
   </body>
