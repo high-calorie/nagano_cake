@@ -4,10 +4,10 @@
     <div class='col-md-3'>
       <h2>商品詳細</h2>
      <div class='mt-3'>
+
       <%= image_tag @item.image, size:"100x100" %>
      </div>
     </div>
-
 
       <div class='col-md-8 offset-md-1'>
         <table class="table table-borderless">
@@ -25,11 +25,14 @@
             </tr>
             <tr>
               <td>税込価格（税抜価格）</td>
+
               <td><%= @item.add_tax_net_price.to_s(:delimited) %>(<%= @item.net_price.to_s(:delimited) %>)円</td>
+
             </tr>
             <tr>
               <td>販売ステータス</td>
               <td>
+
                 <% if @item.status == true %>
                   <h5 class="text-success font-weight-bold">販売中</h5>
                 <% else %>
@@ -46,3 +49,4 @@
 
     </div>
   </div>
+
