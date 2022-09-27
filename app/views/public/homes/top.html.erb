@@ -13,7 +13,9 @@
 
       <h1>新着商品</h1>
         <p><% @item.each do |item| %></p>
+        　<%= link_to item_path(item.id) do %>
           <%= image_tag item.image, size:"100x100" %>
+          <% end %>
           <%= item.name %>
           <%= item.net_price %>
           <% end %>
