@@ -5,7 +5,7 @@ class Public::DeliveriesController < ApplicationController
   end
 
   def edit
-    @delivery =Delivery.finf(params[:id])
+    @delivery =Delivery.find(params[:id])
   end
 
   def create

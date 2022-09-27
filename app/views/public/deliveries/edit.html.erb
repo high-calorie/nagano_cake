@@ -1,2 +1,6 @@
-<h1>Public::Deliveries#edit</h1>
-<p>Find me in app/views/public/deliveries/edit.html.erb</p>
+<h1>配送先編集</h1>
+<%= form_with model: @delivery, url: delivery_path(@delivery.id), method: :patch do |f| %>
+<p>郵便番号（ハイフンなし)<%= f.text_field :post_code %></p>
+<p>住所<%= f.text_field :address %></p>
+<p>宛名<%= f.text_field :name %></p>
+<%= f.submit '変更を保存' %>
