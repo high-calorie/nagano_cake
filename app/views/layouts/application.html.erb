@@ -6,25 +6,26 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
-    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+
     <header>
-      <nav class="navbar navbar-dark bg-dark">
+      <nav class="navbar navbar-dark" style="background-color:#b22222">
         <div class = "col-12 text-center" >
-          <%= image_tag 'header.png', size: "170x100" %>
+          <%= link_to homes_top_path do %>
+          <%= image_tag 'linkedin_banner_image_1.png', size: "170x100" %>
+          <% end %>
         </div>
-                <%= render 'layouts/header' %>
-              <div class = "col-4 text-right" >
-              <%= render 'layouts/search' %>
-              </div>
-            </div>
-          </div>
+            
+            <%= render 'layouts/header' %>
+        <div class = "col-4 text-right" >
+          <%= render 'layouts/search' %>
         </div>
+      </nav>
     </header>
     <%= yield %>
   </body>
-
 </html>

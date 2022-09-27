@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -7,6 +8,8 @@ Rails.application.routes.draw do
   registrations: "public/registrations",
   sessions: 'public/sessions'
 }
+
+
 
 
   namespace :admin do
@@ -21,6 +24,7 @@ Rails.application.routes.draw do
     resources :customers
 
   end
+
 
   scope module: :public do
 
@@ -57,5 +61,5 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
   end
-
 end
+

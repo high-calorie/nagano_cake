@@ -19,14 +19,21 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-
   def unsubscribe
     @customer = current_customer
-  end
-
+  end  
+ 
   def withdraw
     @customer = current_customer
-    @customer.update(withdrawal_flag: true)
+    @customer.update(withdrawal_flag: false)
+    reset_session
+    redirect_to homes_top_path
+  end
+
+  def deleted
+    @customer = current_customer
+    @customer.update(withdrawal_flag: false)
+    flash[:notice] = "退会処理を実行いたしました"
     reset_session
     redirect_to root_path
   end

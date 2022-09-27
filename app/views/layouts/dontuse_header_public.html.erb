@@ -1,8 +1,8 @@
 <% if customer_signed_in? %>
-<p class = "col-4 text-center text-primary text-white">ようこそ<%= current_customer.last_name %>さん</p>
-<div class = "col-1 text-center">
-    
-    <ul class="list-inline">
+<font color="white">ようこそ<%= current_customer.last_name %>さん</font>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+  <ul class="list-inline">
     <li class="list-inline-item">
     <%= link_to my_page_path do %>
     <p class="text-white">
@@ -12,7 +12,7 @@
     </li>
 
     <li class="list-inline-item">
-    <%= link_to items_path do %>
+    <%= link_to items_pathdo do %>
     <p class="text-white">
       商品一覧
     </p>
@@ -34,6 +34,7 @@
     </p>
     <% end %>
     </li>
+
   </ul>
 </div>
 <% else %>
