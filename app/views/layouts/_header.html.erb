@@ -1,7 +1,11 @@
 <% if customer_signed_in? %>
-<p class = "col-4 text-center text-primary text-white">ようこそ<%= current_customer.last_name %>さん</p>
-<div class = "col-1 text-center">
-    
+
+    <ul class = "col-4 text-center text-primary text-white">
+    <p class="text-white">
+    ようこそ<%= current_customer.last_name %>さん
+    </p>
+    </ul>
+
     <ul class="list-inline">
     <li class="list-inline-item">
     <%= link_to my_page_path do %>

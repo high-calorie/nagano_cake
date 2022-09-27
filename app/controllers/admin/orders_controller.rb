@@ -5,16 +5,17 @@ class Admin::OrdersController < ApplicationController
   end
 
   def update
-		@order = Order.find(params[:id])
-	  @order_details = @order.order_details
-    @order.update(order_params)
-    if @order.order_status == "1"
-       @order_details.update_all(make_status: "1")
-    end
-    redirect_to admin_order_path
+		@order_detail = OrderDetail.find(params[:id])
+	  if @order_detail.update(order_detail_params)
+	    redirect_to admin_order_path(@order_detail.order)
+	  else
+	     render "show"
+	  end
   end
 
-  def order_params
-    params.require(:order).permit(:payment_method, :postal_code, :shipping_address, :name, :postage, :total_price, :order_status)
+  private
+  def order_detail_params
+		  params.require(:order_detail).permit(:make_status)
   end
+
 end
