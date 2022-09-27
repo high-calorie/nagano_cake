@@ -21,8 +21,8 @@ class Public::CustomersController < ApplicationController
 
   def unsubscribe
     @customer = current_customer
-  end  
- 
+  end
+
   def withdraw
     @customer = current_customer
     @customer.update(withdrawal_flag: false)

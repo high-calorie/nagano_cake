@@ -25,16 +25,25 @@ class Public::SessionsController < Devise::SessionsController
   # def configure_sign_in_params
   #   devise_parameter_sanitizer.permit(:sign_in, keys: [:attribute])
   # end
-  
+
   def customer_state
     @customer = Customer.find_by(email: params[:customer][:email])
     return if !@customer
     if @customer.valid_password?(params[:customer][:password]) && (@customer.withdrawal_flag == true)
       new_customer_registration_path
-    else
-      redirect_to root_path
+    
     end
   end
 
-  
+  def after_sign_in_path_for(resource)
+    my_page_path
+  end
+
+  def after_sign_out_path_for(resource)
+    new_customer_session_path
+  end
+
 end
+
+
+

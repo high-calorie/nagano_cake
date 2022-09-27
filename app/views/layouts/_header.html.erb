@@ -1,7 +1,45 @@
-<% if customer_signed_in? %>
+<% if admin_signed_in? %>
+<div class = "col-4 text-center text-primary"></div>
+<div class = "col-1 text-center">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+  <%= link_to  admin_items_path do %>
+    <p class="text-white">
+      商品一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to admin_customers_path do %>
+    <p class="text-white">
+      会員一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to admin_homes_top_path do %>
+    <p class="text-white">
+      注文履歴一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to admin_genres_path do %>
+    <p class="text-white">
+      ジャンル一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to destroy_admin_session_path, method: :delete do %>
+    <p class="text-white">
+      ログアウト
+    </p>
+    <% end %>
+<% elsif customer_signed_in? %>
 <p class = "col-4 text-center text-primary text-white">ようこそ<%= current_customer.last_name %>さん</p>
 <div class = "col-1 text-center">
-    
+
     <ul class="list-inline">
     <li class="list-inline-item">
     <%= link_to my_page_path do %>
