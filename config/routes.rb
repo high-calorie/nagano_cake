@@ -8,9 +8,6 @@ Rails.application.routes.draw do
   sessions: 'public/sessions'
 }
 
-
-  
-
   namespace :admin do
     get 'orders/show'
 
@@ -40,13 +37,7 @@ Rails.application.routes.draw do
 
     resources :orders, only:[:new, :create, :index, :show]
 
-
-    get '/my_page' => 'customers#show'
-
-
     resources :genres, only: [:index, :create, :new, :edit, :update, :destroy]
-    get 'homes/top'
-
 
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
