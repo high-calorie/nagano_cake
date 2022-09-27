@@ -3,7 +3,7 @@ class Public::OrdersController < ApplicationController
 
 
     def new
-        @order = Order.new
+    @order = Order.new
     end
 
 
@@ -20,28 +20,20 @@ class Public::OrdersController < ApplicationController
 
     def create
       cart_items = current_customer.cart_items
-    # ログインユーザーのカートアイテムをすべて取り出して cart_items に入れます
       @order = current_customer.orders.new(order_params)
-    # 渡ってきた値を @order に入れます
       if @order.save
         cart_items.each do |cart|
-    # 取り出したカートアイテムの数繰り返します
-    # order_item にも一緒にデータを保存する必要があるのでここで保存します
           order_item = OrderDetail.new
-          order_item.item_id = cart.item_id
+          order_item.item_id = cart.id
           order_item.order_id = @order.id
-          order_item.quantity = cart.quantity
-    # 購入が完了したらカート情報は削除するのでこちらに保存します
+          order_item.quantity = Cart.quantity
           order_item.tax_included_price = cart.item.net_price*1.1
           order_item.make_status = 0
-    # カート情報を削除するので item との紐付けが切れる前に保存します
           order_item.save
         end
         redirect_to orders_path
         cart_items.destroy_all
-    # ユーザーに関連するカートのデータ(購入したデータ)をすべて削除します(カートを空にする)
-      else
-        @order = Order.new(order_params)
+
         render :new
       end
     end
@@ -88,12 +80,12 @@ class Public::OrdersController < ApplicationController
     private
 
     def order_params
-        params.require(:order).permit(:payment_method, :postal_code, :shipping_address, :name, :postage, :total_price, :orders_status, :customer_id)
+        params.require(:order).permit(:payment_method, :postal_code, :shipping_address, :name, :postage, :total_price, :order_status, :customer_id)
     end
 
 
     def address_params
-      params.require(:order).permit(:name, :address)
+      params.require(:order).permit(:name, :address, :delivery_id)
     end
     
     

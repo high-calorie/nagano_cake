@@ -58,5 +58,5 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
   end
-
 end
+
