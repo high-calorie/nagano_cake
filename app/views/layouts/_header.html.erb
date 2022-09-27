@@ -1,4 +1,4 @@
-<% if customer_signed_in? %>
+<% if admin_signed_in? %>
 <div class = "col-4 text-center text-primary"></div>
 <div class = "col-1 text-center">
   <%= link_to "商品一覧", admin_items_path %>
@@ -11,6 +11,20 @@
 </div>
 <div class = "col-1 text-center">
   <%= link_to "ジャンル一覧", admin_genres_path %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
+</div>
+<% elsif customer_signed_in? %>
+<div class = "col-4 text-center text-primary">ようこそ<%= current_customer.last_name %>さん</div>
+<div class = "col-1 text-center">
+  <%= link_to "マイページ", my_page_path %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "商品一覧", items_path %>
+</div>
+<div class = "col-1 text-center">
+  <%= link_to "カート", cart_items_path %>
 </div>
 <div class = "col-1 text-center">
   <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
