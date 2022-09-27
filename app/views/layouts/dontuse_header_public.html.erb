@@ -1,0 +1,74 @@
+<% if customer_signed_in? %>
+<font color="white">ようこそ<%= current_customer.last_name %>さん</font>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
+  <ul class="list-inline">
+    <li class="list-inline-item">
+    <%= link_to my_page_path do %>
+    <p class="text-white">
+      マイページ
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to items_pathdo do %>
+    <p class="text-white">
+      商品一覧
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to cart_items_path do %>
+    <p class="text-white">
+      カート
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to destroy_customer_session_path, method: :delete do %>
+    <p class="text-white">
+      ログアウト
+    </p>
+    <% end %>
+    </li>
+
+  </ul>
+</div>
+<% else %>
+<ul class="list-inline">
+    <li class="list-inline-item">
+    <%= link_to homes_about_path do %>
+    <p class="text-white">
+      About
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to admin_items_path do %>
+    <p class="text-white">
+      商品一覧
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to new_customer_registration_path do %>
+    <p class="text-white">
+      新規登録
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to new_customer_session_path do %>
+    <p class="text-white">
+      ログイン
+    </p>
+    <% end %>
+    </li>
+  </ul>
+<% end %>

@@ -8,6 +8,7 @@ class Admin::ItemsController < ApplicationController
 
     def new
         @item = Item.new
+
         @genre = Genre.all
     end
 
@@ -21,7 +22,7 @@ class Admin::ItemsController < ApplicationController
     end
 
   def edit
-      @item = Item.find_by(params[:id])
+      @item = Item.find(params[:id])
       @genres = Genre.all
   end
 

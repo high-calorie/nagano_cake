@@ -1,6 +1,6 @@
 <h1>配送先登録/一覧</h1>
 
-<%= form_with model:delivery, url: do |f| %>
+<%= form_with model:@delivery, url:deliveries_path, local: true do |f| %>
 
 <div class="field">
   <%= f.label :郵便番号（ハイフンなし） %><br />

@@ -1,0 +1,34 @@
+<div class="container px-5 px-sm-0">
+  <div class="row">
+    <div class="col-md-10 offset-md-1">
+      <h1>会員一覧</h1>
+      <table class="table table-hover table-inverse">
+       <tr>
+         <td>会員ID</td>
+         <td>氏名</td>
+         <td>メールアドレス</td>
+         <td>ステータス</td>
+       </tr>
+         <% @customer.each do |customer| %>
+       <tr>
+         <td><%= customer.id %></td>
+         <td><%= customer.last_name %><%= customer.first_name %></td>
+         <td><%= customer.email %></td>
+         <td class = "border-bottom">
+              <% if customer.withdrawal_flag? %>
+              <span>退会</span>
+              <% else %>
+              <span>有効</span>
+              <% end %>
+          </td>
+         </tr>
+           <% end %>
+          <tr>
+            <td></td>
+            <td></td>
+            <td><%= paginate @customer %></td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>

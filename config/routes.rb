@@ -1,12 +1,30 @@
 Rails.application.routes.draw do
+
+ devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
+    sessions: "admin/sessions"
+  }
+
+ devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
+
+
+
+
   namespace :admin do
+    get 'orders/show'
+
 
     resources :genres, only: [:create, :new, :index, :edit, :update, :destroy]
     resources :items, except: [:destroy]
     resources :orders, only: [:show, :update]
     get 'homes/top'
     resources :order_details, only: [:update]
+    resources :customers
+
   end
+
 
   scope module: :public do
 
@@ -14,19 +32,17 @@ Rails.application.routes.draw do
     get 'homes/top'
     get 'homes/about'
 
-    get 'unsubscribe/:name' => 'customers#unsubscribe', as: 'confirm_unsubscribe'
+    get "/unsubscribe" => 'customers#unsubscribe', as: 'confirm_unsubscribe'
     patch '/withdraw/:name' => 'customers#withdraw', as: 'withdraw_customer'
     put 'withdraw/:name' => 'customers#withdraw'
 
-  
+    post 'orders/confirm' => 'orders#confirm', as: 'order_confirm'
+    get 'orders/thanx' => 'orders#thanx', as: 'thanx'
 
 
 
-    resources :orders do
-        collection do
-        get 'confirm' => 'orders#confirm'
-        end
-    end
+    resources :orders
+
 
     get '/my_page' => 'customers#show'
 
@@ -37,9 +53,7 @@ Rails.application.routes.draw do
 
     resources :deliveries, only: [:index, :edit, :create, :update, :destroy]
 
-
-    get 'customers/show'
-    get 'customers/edit'
+    resources :customers
 
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
     resources :cart_items, only: [:index, :create, :update, :destroy]
@@ -47,16 +61,5 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
 
   end
-
-
- devise_for :customers,skip: [:passwords], controllers: {
-  registrations: "public/registrations",
-  sessions: 'public/sessions'
-}
-
-  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
-    sessions: "admin/sessions"
-  }
-
 end
 

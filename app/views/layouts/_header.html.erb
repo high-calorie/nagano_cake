@@ -1,48 +1,118 @@
-<% if customer_signed_in? %>
-    <div class = "col-5 text-center">ようこそ<%= current_customer.last_name %>さん</div>
-    <div class = "col-1 text-center">
-        <%= link_to "商品一覧", admin_items_path %>
-    </div>
-    <div class = "col-1 text-center">
-        <%=  link_to "会員一覧" %>
-    </div>
-    <div class = "col-1 text-center">
-        <%=  link_to "注文履歴一覧" %>
-    </div>
-    <div class = "col-1 text-center">
-        <%= link_to "ジャンル一覧",admin_genres_path %>
-    </div>
-    <div class = "col-1 text-center">
-        <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
-    </div>
-    <% else %>
-    <div class = "col-4 text-center"></div>
-    <div class = "col-1 text-center">
-        <%= link_to "About", homes_about_path %>
-    </div>
-    <div class = "col-1 text-center">
-        <%= link_to "商品一覧", admin_items_path %>
-    </div>
-    <div class = "col-1 text-center">
-        <%= link_to "新規登録", new_customer_registration_path %>
-    </div>
-    <div class = "col-1 text-center">
-        <%= link_to "ログイン", new_customer_session_path %>
-    </div>
-<% end %>
 
+<% if admin_signed_in? %>
+<div class = "col-4 text-center text-primary"></div>
+<div class = "col-1 text-center">
+  <ul class="list-inline">
+    <li class="list-inline-item">
+  <%= link_to  admin_items_path do %>
+    <p class="text-white">
+      商品一覧
+    </p>
+    <% end %>
 
+    <li class="list-inline-item">
+    <%= link_to admin_customers_path do %>
+    <p class="text-white">
+      会員一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to admin_homes_top_path do %>
+    <p class="text-white">
+      注文履歴一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to admin_genres_path do %>
+    <p class="text-white">
+      ジャンル一覧
+    </p>
+    <% end %>
+
+    <li class="list-inline-item">
+    <%= link_to destroy_admin_session_path, method: :delete do %>
+    <p class="text-white">
+      ログアウト
+    </p>
+    <% end %>
+<% elsif customer_signed_in? %>
+<div class = "col-4 text-center text-primary"></div>
+<div class = "col-1 text-center">
+<ul class = "col-4 text-center text-primary text-white">
+    <p class="text-white">
+    ようこそ<%= current_customer.last_name %>さん
+    </p>
+    </ul>
+
+    <ul class="list-inline">
+    <li class="list-inline-item">
+    <%= link_to my_page_path do %>
+    <p class="text-white">
+      マイページ
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to items_path do %>
+    <p class="text-white">
+      商品一覧
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to cart_items_path do %>
+    <p class="text-white">
+      カート
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to destroy_customer_session_path, method: :delete do %>
+    <p class="text-white">
+      ログアウト
+    </p>
+    <% end %>
+    </li>
+  </ul>
+</div>
+</div>
 <% else %>
-<div class = "col-4 text-center"></div>
-<div class = "col-1 text-center">
-  <%= link_to "About", homes_about_path %>
-</div>
-<div class = "col-1 text-center">
-  <%= link_to "商品一覧", admin_items_path %>
-</div>
-<div class = "col-1 text-center">
-  <%= link_to "新規登録", new_customer_registration_path %>
-</div>
-<div class = "col-1 text-center">
-  <%= link_to "ログイン" , new_customer_session_path%>
-</div>
+<ul class="list-inline">
+    <li class="list-inline-item">
+    <%= link_to homes_about_path do %>
+    <p class="text-white">
+      About
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to admin_items_path do %>
+    <p class="text-white">
+      商品一覧
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to new_customer_registration_path do %>
+    <p class="text-white">
+      新規登録
+    </p>
+    <% end %>
+    </li>
+
+    <li class="list-inline-item">
+    <%= link_to new_customer_session_path do %>
+    <p class="text-white">
+      ログイン
+    </p>
+    <% end %>
+    </li>
+  </ul>
+<% end %>
