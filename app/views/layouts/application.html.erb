@@ -17,11 +17,7 @@
           <%= image_tag 'header.png', size: "170x100" %>
           <% end %>
         </div>
-          <% if request.path == 'admin' %>
             <%= render 'layouts/header' %>
-          <% else %>
-            <%= render 'layouts/header_public' %>
-          <% end %>
         <div class = "col-4 text-right" >
           <%= render 'layouts/search' %>
         </div>
