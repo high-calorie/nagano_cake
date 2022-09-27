@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
  devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
     sessions: "admin/sessions"
   }
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
 }
 
 
-  
+
 
   namespace :admin do
     get 'orders/show'
@@ -26,7 +27,6 @@ Rails.application.routes.draw do
 
 
   scope module: :public do
-   root to: 'public/items#index'
 
     resources :items, only: [:show, :index]
     get 'homes/top'
