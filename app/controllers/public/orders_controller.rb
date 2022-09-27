@@ -26,7 +26,7 @@ class Public::OrdersController < ApplicationController
           order_item = OrderDetail.new
           order_item.item_id = cart.id
           order_item.order_id = @order.id
-          order_item.quantity = Cart.quantity
+          order_item.quantity = cart.quantity
           order_item.tax_included_price = cart.item.net_price*1.1
           order_item.make_status = 0
           order_item.save
@@ -34,7 +34,6 @@ class Public::OrdersController < ApplicationController
         redirect_to thanx_path
         cart_items.destroy_all
 
-        render :new
       end
     end
 
@@ -90,8 +89,8 @@ class Public::OrdersController < ApplicationController
     def address_params
       params.require(:order).permit(:name, :address, :delivery_id)
     end
-    
-    
+
+
     def order_item_params
       params.require(:order_item).permit(:item_id, :order_id, :quantity, :subprice, :order_status)
     end

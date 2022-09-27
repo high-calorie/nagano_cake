@@ -21,17 +21,10 @@
               <%= delivery.name %>
           </td>
           <td>
-<<<<<<< HEAD
-              <%= link_to "編集する",_path(delivery) %>
-          </td>
-          <td>
-              <%= link_to "削除する",_path(delivery), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, remote: true %>
-=======
               <%= link_to "編集する", edit_delivery_path(delivery) %>
           </td>
           <td>
               <%= link_to "削除する", delivery_path(delivery), method: :delete, data: {confirm: "本当に削除してもよろしいですか？"}, remote: true %>
->>>>>>> 6e40bc2669463ccaa300ebdc4072a833ec4fcd7b
           </td>
         </tr>
       <% end %>
